@@ -3528,9 +3528,19 @@ Shortcut Shortcut::_sc[] = {
       {
          MsWidget::MAIN_WINDOW,
          STATE_DISABLED | STATE_NORMAL | STATE_NOTE_ENTRY | STATE_EDIT | STATE_PLAY,
-         "move-notes",
-         QT_TRANSLATE_NOOP("action","Move Notes"),
-         QT_TRANSLATE_NOOP("action","Move Notes"),
+         "move-note-left",
+         QT_TRANSLATE_NOOP("action","Move Notes Left"),
+         QT_TRANSLATE_NOOP("action","Move Notes Left"),
+         0,
+         Icons::Invalid_ICON,
+         Qt::ApplicationShortcut
+         },
+      {
+         MsWidget::MAIN_WINDOW,
+         STATE_DISABLED | STATE_NORMAL | STATE_NOTE_ENTRY | STATE_EDIT | STATE_PLAY,
+         "move-note-right",
+         QT_TRANSLATE_NOOP("action","Move Notes Right"),
+         QT_TRANSLATE_NOOP("action","Move Notes Right"),
          0,
          Icons::Invalid_ICON,
          Qt::ApplicationShortcut

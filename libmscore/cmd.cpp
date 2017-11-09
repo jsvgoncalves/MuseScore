@@ -3003,23 +3003,23 @@ void Score::cmdPitchDown()
       }
 
 //---------------------------------------------------------
-//   cmdMoveNotes
+//   cmdMoveNoteLeftRight
 //---------------------------------------------------------
 
-void Score::cmdMoveNotes()
+void Score::cmdMoveNoteLeftRight(bool left)
       {
       Element* el = selection().element();
       if (el && el->isLyrics())
-            qDebug("<move-notes> not implemented for this type");
+            qDebug("<move-note-left-right> not implemented for this type");
             // cmdMoveLyrics(toLyrics(el), Direction::UP);
       else if (el && (el->isArticulation() || el->isText()))
-            qDebug("<move-notes> not implemented for this type");
+            qDebug("<move-note-left-right> not implemented for this type");
             // el->undoChangeProperty(P_ID::USER_OFF, el->userOff() + QPointF(0.0, -MScore::nudgeStep * el->spatium()));
       else if (el && el->isRest())
-            qDebug("<move-notes> not implemented for this type");
+            qDebug("<move-note-left-right> not implemented for this type");
             // cmdMoveRest(toRest(el), Direction::UP);
       else
-            leftRight(false);
+            leftRight(left);
       }
 
 //---------------------------------------------------------
@@ -3620,7 +3620,8 @@ void Score::cmd(const QAction* a, EditData& ed)
             { "toggle-insert-mode",         [this]{ _is.setInsertMode(!_is.insertMode());                       }},
             { "pitch-up",                   [this]{ cmdPitchUp();                                               }},
             { "pitch-down",                 [this]{ cmdPitchDown();                                             }},
-            { "move-notes",                 [this]{ cmdMoveNotes();                                             }},
+            { "move-note-left",             [this]{ cmdMoveNoteLeftRight(true);                                 }},
+            { "move-note-right",            [this]{ cmdMoveNoteLeftRight(false);                                }},
             { "time-delete",                [this]{ cmdTimeDelete();                                            }},
             { "pitch-up-octave",            [this]{ cmdPitchUpOctave();                                         }},
             { "pitch-down-octave",          [this]{ cmdPitchDownOctave();                                       }},

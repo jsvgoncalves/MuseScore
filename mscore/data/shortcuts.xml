@@ -995,7 +995,11 @@
     <seq>Ctrl+I</seq>
     </SC>
   <SC>
-    <key>move-notes</key>
+    <key>move-note-left</key>
+    <seq>ALT+Left</seq>
+    </SC>
+  <SC>
+    <key>move-note-right</key>
     <seq>ALT+Right</seq>
     </SC>
 

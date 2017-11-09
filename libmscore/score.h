@@ -520,7 +520,7 @@ class Score : public QObject, ScoreElement {
       void createGraceNotesPlayEvents(int tick, Chord* chord, int& ontime, int& trailtime);
       void cmdPitchUp();
       void cmdPitchDown();
-      void cmdMoveNotes();
+      void cmdMoveNoteLeftRight(bool left);
       void cmdPitchUpOctave();
       void cmdPitchDownOctave();
       void cmdPadNoteIncreaseTAB();
