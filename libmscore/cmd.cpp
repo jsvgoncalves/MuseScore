@@ -1483,6 +1483,33 @@ void Score::upDown(bool up, UpDownMode mode)
       }
 
 //---------------------------------------------------------
+//   leftRight
+///   Move note left or right.
+//---------------------------------------------------------
+void Score::leftRight(bool left)
+      {
+      QList<Note*> el = selection().uniqueNotes();
+      for (Note* oNote : el) {
+            int tick     = oNote->chord()->tick();
+            Staff* staff = oNote->staff();
+            Part* part   = staff->part();
+            Key key      = staff->key(tick);
+            int tpc1     = oNote->tpc1();
+            int tpc2     = oNote->tpc2();
+            int pitch    = oNote->pitch();
+            int newTpc1  = tpc1;      // default to unchanged
+            int newTpc2  = tpc2;      // default to unchanged
+            int newPitch = pitch;     // default to unchanged
+            int string   = oNote->string();
+            int fret     = oNote->fret();
+            }
+
+      _selection.clear();
+      for (Note* note : el)
+            _selection.add(note);
+      }
+
+//---------------------------------------------------------
 //   addArticulation
 ///   Add attribute \a attr to all selected notes/rests.
 ///
@@ -2976,6 +3003,26 @@ void Score::cmdPitchDown()
       }
 
 //---------------------------------------------------------
+//   cmdMoveNotes
+//---------------------------------------------------------
+
+void Score::cmdMoveNotes()
+      {
+      Element* el = selection().element();
+      if (el && el->isLyrics())
+            qDebug("<move-notes> not implemented for this type");
+            // cmdMoveLyrics(toLyrics(el), Direction::UP);
+      else if (el && (el->isArticulation() || el->isText()))
+            qDebug("<move-notes> not implemented for this type");
+            // el->undoChangeProperty(P_ID::USER_OFF, el->userOff() + QPointF(0.0, -MScore::nudgeStep * el->spatium()));
+      else if (el && el->isRest())
+            qDebug("<move-notes> not implemented for this type");
+            // cmdMoveRest(toRest(el), Direction::UP);
+      else
+            leftRight(false);
+      }
+
+//---------------------------------------------------------
 //   cmdTimeDelete
 //---------------------------------------------------------
 
@@ -3573,6 +3620,7 @@ void Score::cmd(const QAction* a, EditData& ed)
             { "toggle-insert-mode",         [this]{ _is.setInsertMode(!_is.insertMode());                       }},
             { "pitch-up",                   [this]{ cmdPitchUp();                                               }},
             { "pitch-down",                 [this]{ cmdPitchDown();                                             }},
+            { "move-notes",                 [this]{ cmdMoveNotes();                                             }},
             { "time-delete",                [this]{ cmdTimeDelete();                                            }},
             { "pitch-up-octave",            [this]{ cmdPitchUpOctave();                                         }},
             { "pitch-down-octave",          [this]{ cmdPitchDownOctave();                                       }},

@@ -520,6 +520,7 @@ class Score : public QObject, ScoreElement {
       void createGraceNotesPlayEvents(int tick, Chord* chord, int& ontime, int& trailtime);
       void cmdPitchUp();
       void cmdPitchDown();
+      void cmdMoveNotes();
       void cmdPitchUpOctave();
       void cmdPitchDownOctave();
       void cmdPadNoteIncreaseTAB();
@@ -650,6 +651,7 @@ class Score : public QObject, ScoreElement {
       Rest* setRest(int tick,  int track, Fraction, bool useDots, Tuplet* tuplet, bool useFullMeasureRest = true);
 
       void upDown(bool up, UpDownMode);
+      void leftRight(bool left);
       ChordRest* searchNote(int tick, int track) const;
 
       // undo/redo ops

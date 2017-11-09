@@ -994,6 +994,10 @@
     <key>toggle-insert-mode</key>
     <seq>Ctrl+I</seq>
     </SC>
+  <SC>
+    <key>move-notes</key>
+    <seq>ALT+Right</seq>
+    </SC>
 
   </Shortcuts>
 

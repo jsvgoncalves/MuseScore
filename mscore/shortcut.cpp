@@ -3525,6 +3525,16 @@ Shortcut Shortcut::_sc[] = {
          Icons::Invalid_ICON,
          Qt::ApplicationShortcut
          },
+      {
+         MsWidget::MAIN_WINDOW,
+         STATE_DISABLED | STATE_NORMAL | STATE_NOTE_ENTRY | STATE_EDIT | STATE_PLAY,
+         "move-notes",
+         QT_TRANSLATE_NOOP("action","Move Notes"),
+         QT_TRANSLATE_NOOP("action","Move Notes"),
+         0,
+         Icons::Invalid_ICON,
+         Qt::ApplicationShortcut
+         },
 #ifndef NDEBUG
       {
          MsWidget::MAIN_WINDOW,
